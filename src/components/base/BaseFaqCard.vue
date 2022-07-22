@@ -97,9 +97,11 @@ export default {
     function toggleAccordion(index) {
       accordionData.value.map((item) => {
         if (item.isShow === false) {
-          accordionData.value[index].isShow = !accordionData.value[index].isShow;
+          accordionData.value[index].isShow =
+            !accordionData.value[index].isShow;
         } else {
-          accordionData.value[index].isShow = !accordionData.value[index].isShow;
+          accordionData.value[index].isShow =
+            !accordionData.value[index].isShow;
           item.isShow = false;
         }
       });
@@ -149,15 +151,16 @@ export default {
         left: -85px
         bottom: -50px
         width: 472px
+        animation: show 3s
     &-women
         position: absolute
         left: -85px
+        animation: show 3s
     &-box
         position: absolute
         bottom: 115px
         left: -95px
-        overflow: visible
-        z-index: 1000
+        animation: move 3s infinite, show 3s
 // Accordion Block Styles
 .card-accordion
     display: flex
@@ -202,6 +205,25 @@ export default {
   transform: rotate(180deg)
   transition: 1.5s ease
 
+// Animation
+@keyframes move
+  0%
+    transform: translateY(10px)
+  50%
+    transform: translateY(-10px)
+  100%
+    transform: translateY(10px)
+
+@keyframes show
+  0%
+    opacity: 0
+    transform: translateX(-50px)
+  75%
+    transform: translateX(0px)
+  100%
+    opacity: 1
+
+// Adaptive
 @media only screen and (max-width: 1024px)
     .card-container
         width: 750px
